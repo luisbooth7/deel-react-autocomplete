@@ -13,14 +13,14 @@ You will also see any lint errors in the console.
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-List of searcheable names:
-Leanne Graham
-Ervin Howell
-Clementine Bauch
-Patricia Lebsack
-Chelsey Dietrich
-Mrs. Dennis Schulist
-Kurtis Weissnat
-Nicholas Runolfsdottir V
-Glenna Reighert
+### List of searcheable names:
+Leanne Graham\
+Ervin Howell\
+Clementine Bauch\
+Patricia Lebsack\
+Chelsey Dietrich\
+Mrs. Dennis Schulist\
+Kurtis Weissnat\
+Nicholas Runolfsdottir V\
+Glenna Reighert\
 Clementina DuBuque
