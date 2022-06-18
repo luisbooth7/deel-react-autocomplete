@@ -46,6 +46,12 @@
   border-radius: 0 0 3px 3px;
   padding: 8px;
   font-size: 18px;
+  white-space: pre;
+  cursor: pointer;
+}
+
+.rct-autocomplete-highlight {
+  background-color: yellow;
 }
 
 @keyframes App-logo-spin {

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, ChangeEvent } from 'react';
+import Highlight from 'components/Highlight';
 
 interface Props {
   namesList: string[];
@@ -8,7 +9,7 @@ interface Props {
 const Autocomplete: React.FC<Props> = (props) => {
   const [inputText, setInputText] = useState<string>('');
   const [suggestionsList, setSuggestionsList] = useState<string[]>([]);
-  const [activeSuggestion, setActiveSuggestion] = useState<number>(0);
+  const [activeSuggestion, setActiveSuggestion] = useState<number>(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const { namesList, autoFocus } = props;
 
@@ -52,11 +53,7 @@ const Autocomplete: React.FC<Props> = (props) => {
 
     switch(event.key) {
       case 'Enter':
-        if(activeSuggestion > -1) {
-          setInputText(suggestionsList[activeSuggestion]);
-          resetActiveSuggestion();
-          resetSuggestionsListt();
-        }
+        activeSuggestion > -1 && confirmSuggestion();
         break;
       case 'ArrowUp':
         // USABILITY: pressing arrow up in a text field will move the cursor back to the start
@@ -70,7 +67,18 @@ const Autocomplete: React.FC<Props> = (props) => {
     }
   };
 
-  const renderSuggestedItemsList = (suggestionsList: string[]): React.ReactNode => {
+  const handleClick = (event: React.MouseEvent, suggestedItem: Number = activeSuggestion): void => {
+    event.preventDefault();
+    confirmSuggestion();
+  }
+
+  const confirmSuggestion = (suggestionIndex = activeSuggestion) : void => {
+    setInputText(suggestionsList[suggestionIndex]);
+    resetActiveSuggestion();
+    resetSuggestionsListt();
+  }
+
+  const renderSuggestedItemsList = (suggestionsList: string[], matchString: string): React.ReactNode => {
     return suggestionsList.map(
       (suggestion, index) => {
         const isActiveSuggestion = index === activeSuggestion;
@@ -82,8 +90,9 @@ const Autocomplete: React.FC<Props> = (props) => {
           <div
             key={`autocomplete-${index}`}
             className="rct-autocomplete-suggested-item"
-            style={styles}>
-            {suggestion}
+            style={styles}
+            onClick={(event) => handleClick(event, index)}>
+              <Highlight suggestion={suggestion} matchString={matchString} />
           </div>
         );
       }
@@ -99,7 +108,7 @@ const Autocomplete: React.FC<Props> = (props) => {
         onChange={handleChange}
         onKeyDown={handleKeyPress}
         value={inputText} />
-      {renderSuggestedItemsList(suggestionsList)}
+      {renderSuggestedItemsList(suggestionsList, inputText)}
     </>
   )
 };
