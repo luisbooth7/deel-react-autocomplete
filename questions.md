@@ -18,7 +18,7 @@ shouldComponentUpdate will not react to Context state changes. If a component im
 2. Using shouldComponentUpdate or using PureComponents which have a built-in implementation for it.
 
 ### 5.  What is a fragment and why do we need it? Give an example where it might break my app.
-A fragment is a way to create "empty" wrappers in React. This is very useful in cases where a wrapper element is unnecessary, such as when rendering an array of <li> inside a <ul>, considering <ul> is in the parent component. They might break the app when a parent component is expecting a single DOM element.
+A fragment is a way to create "empty" wrappers in React. This is very useful in cases where a wrapper element is unnecessary, such as when rendering an array of `<li>` inside a `<ul>`, considering `<ul>` is in the parent component. They might break the app when a parent component is expecting a single DOM element.
 
 ### 6.  Give 3 examples of the HOC pattern.
 1. React Context
