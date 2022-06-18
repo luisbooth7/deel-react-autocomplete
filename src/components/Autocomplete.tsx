@@ -92,7 +92,7 @@ const Autocomplete: React.FC<Props> = (props) => {
             className="rct-autocomplete-suggested-item"
             style={styles}
             onClick={(event) => handleClick(event, index)}
-            onMouseEnter={() => setActiveSuggestion(index)}>>
+            onMouseEnter={() => setActiveSuggestion(index)}>
               <Highlight suggestion={suggestion} matchString={matchString} />
           </div>
         );
