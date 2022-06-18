@@ -47,6 +47,7 @@
   padding: 8px;
   font-size: 18px;
   white-space: pre;
+  cursor: pointer;
 }
 
 .rct-autocomplete-highlight {
